@@ -53,6 +53,12 @@ namespace AspNetIdentity.WebApi.Migrations
                 roleManager.Create(new IdentityRole { Name = "SuperAdmin" });
                 roleManager.Create(new IdentityRole { Name = "Admin" });
                 roleManager.Create(new IdentityRole { Name = "User" });
+                roleManager.Create(new IdentityRole { Name = "DHUser" });
+                roleManager.Create(new IdentityRole { Name = "DHAdmin" });
+                roleManager.Create(new IdentityRole { Name = "DSUser" });
+                roleManager.Create(new IdentityRole { Name = "DSAdmin" });
+                roleManager.Create(new IdentityRole { Name = "WPUser" });
+                roleManager.Create(new IdentityRole { Name = "WPAdmin" });
             }
 
             var lookUpUser = manager.FindByName("memo");
