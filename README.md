@@ -1,3 +1,10 @@
-Tutorial for Building Simple Membership System using ASP.NET Identity 2.1, ASP.NET Web API, and AngularJS 
-===============
-Tutorial which will cover how to integrate ASP.NET Identity system with ASP.NET Web API. In this tutorial we'll build a secure HTTP service which acts as back-end for SPA front-end built using AngularJS, it should cover in a simple way different ASP.NET Identity 2.1 features such as: Accounts managements, roles management, email confirmations, change password, roles based authorization, claims based authorization, brute force protection.
+Based on the tutorial from https://github.com/tjoudeh/AspNetIdentity.WebApi.git
+
+-	Open the Solution is VSS.  In the Web.Config, change the connection string “DefaultConnection”  to a server you have access too
+o	Eg. server=localhost;User Id=userWhoHasCreateDBPermission;pwd=Password!;Persist Security Info=True;database=AspNetIdentity.WebApi
+-	Open the file Migrations/Configuration.cs, Find the ‘Seed’ method and modify the initial user that is created to whatever you want the username/pwd to be.
+-	In Visual Studio, from the NuGet Package Manager Console, run the following commands:
+o	enable-migrations
+o	add-migration InitialCreate
+o	update-database
+-	Verify the database has been created and the expected user has been created as well.
