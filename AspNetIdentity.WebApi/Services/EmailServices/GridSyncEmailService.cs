@@ -8,9 +8,9 @@ using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace AspNetIdentity.WebApi.Services
+namespace AspNetIdentity.WebApi.Services.EmailServices
 {
-    public class EmailService : IIdentityMessageService
+    public class GridSyncEmailService : IIdentityMessageService
     {
         public async Task SendAsync(IdentityMessage message)
         {

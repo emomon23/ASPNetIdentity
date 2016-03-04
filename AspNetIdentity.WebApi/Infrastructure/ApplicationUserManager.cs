@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
+using AspNetIdentity.WebApi.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,8 +38,9 @@ namespace AspNetIdentity.WebApi.Infrastructure
                 RequireLowercase = true,
                 RequireUppercase = true,
             };
+
             
-            appUserManager.EmailService = new AspNetIdentity.WebApi.Services.EmailService();
+            appUserManager.EmailService = new ServicesFactory().CreateEmailService();
 
             var dataProtectionProvider = options.DataProtectionProvider;
             if (dataProtectionProvider != null)

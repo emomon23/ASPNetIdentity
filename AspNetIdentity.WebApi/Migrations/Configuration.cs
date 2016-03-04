@@ -20,32 +20,46 @@ namespace AspNetIdentity.WebApi.Migrations
             //  This method will be called after migrating to the latest version.
 
             var manager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(new ApplicationDbContext()));
-            
+
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(new ApplicationDbContext()));
 
             var user = new ApplicationUser()
             {
-                UserName = "SuperPowerUser",
-                Email = "taiseer.joudeh@gmail.com",
+                UserName = "memo",
+                Email = "iemomon@hotmail.com",
                 EmailConfirmed = true,
-                FirstName = "Taiseer",
-                LastName = "Joudeh",
+                FirstName = "Michael",
+                LastName = "Emo",
                 Level = 1,
                 JoinDate = DateTime.Now.AddYears(-3)
             };
 
-            manager.Create(user, "MySuperP@ss!");
+            manager.Create(user, "P@ssword");
+
+            user = new ApplicationUser()
+            {
+                UserName = "simple",
+                Email = "user@hotmail.com",
+                EmailConfirmed = true,
+                FirstName = "Jon",
+                LastName = "Nelson",
+                Level = 1,
+                JoinDate = DateTime.Now.AddYears(-2)
+            };
+            manager.Create(user, "P@ssword");
 
             if (roleManager.Roles.Count() == 0)
             {
                 roleManager.Create(new IdentityRole { Name = "SuperAdmin" });
-                roleManager.Create(new IdentityRole { Name = "Admin"});
-                roleManager.Create(new IdentityRole { Name = "User"});
+                roleManager.Create(new IdentityRole { Name = "Admin" });
+                roleManager.Create(new IdentityRole { Name = "User" });
             }
 
-            var adminUser = manager.FindByName("SuperPowerUser");
+            var lookUpUser = manager.FindByName("memo");
+            manager.AddToRoles(lookUpUser.Id, new string[] { "SuperAdmin", "Admin" });
 
-            manager.AddToRoles(adminUser.Id, new string[] { "SuperAdmin", "Admin" });
+            lookUpUser = manager.FindByName("simple");
+            manager.AddToRoles(lookUpUser.Id, new string[] { "User" });
         }
     }
 }
